@@ -1,7 +1,7 @@
 <template>
     <div>
         <!-- Kind of Navigation -->
-        <BranchList/>
+        <!-- <BranchList/> -->
         <!-- View of your branches -->
         <keep-alive>
             <router-view></router-view>
@@ -9,10 +9,10 @@
     </div>
 </template>
 <script>
-import BranchList from '../components/BranchList.vue'
+// import BranchList from '../components/BranchList.vue'
     export default {
         components: {
-            BranchList
+            // BranchList
         }
     }
 </script>

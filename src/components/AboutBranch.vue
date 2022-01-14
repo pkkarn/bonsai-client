@@ -1,9 +1,8 @@
 <template>
     <div>
         <h5>Bonsai About</h5>
-
-        <seed-build 
-        :graphData="customData"></seed-build>
+    
+        About
     </div>
 </template>
 
@@ -11,24 +10,7 @@
     export default {
         data() {
             return {
-                customData: {
-                    nodes: [
-                    {
-                        id: '1',
-                        label: 'About 1',
-                    },
-                    {
-                        id: '2',
-                        label: 'About 2',
-                    },
-                    ],
-                    edges: [
-                    {
-                        source: '1',
-                        target: '2',
-                    },
-                    ],
-                },
+                 
             }
         }
     }

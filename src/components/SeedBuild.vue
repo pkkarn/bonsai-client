@@ -1,6 +1,7 @@
 <template>
   <div class="graphCanvas">
-    <div ref="currentGraph"></div>
+    {{uniqueGraphId}}
+    <div :id="uniqueGraphId"></div>
   </div>
 </template>
 
@@ -10,6 +11,19 @@ import branchConfig from '../config/branchConfig';
 
 export default {
   props: {
+    graphId: {
+      type: String,
+      required: true,
+    },
+    hw: {
+      type: Object,
+      default: () => {
+        return {
+          width: 1500,
+          height: 863,
+        }
+      },
+    },
     graphData: {
       type: Object,
       required: true,
@@ -23,13 +37,14 @@ export default {
   async mounted() {
     // build function
     await this.buildGraph();
+    this.$emit('currentGraph', { instance: this.current_graph, id: this.uniqueGraphId });
   },
 
   computed: {
     // this is your main container id you can say
-    // uniqueGraphId() {
-    //   return `${this.graphId}_${Math.random().toString(36).substr(2, 9)}`;
-    // },
+    uniqueGraphId() {
+      return `${this.graphId}_${Math.random().toString(36).substr(2, 9)}`;
+    },
   },
 
   methods: {
@@ -73,7 +88,9 @@ export default {
 
       this.config = branchConfig;
       this.config.plugins = this.activePlugins;
-      this.config.container = this.$refs.currentGraph;
+      this.config.container = this.uniqueGraphId;
+      this.config.width = this.hw.width;
+      this.config.height = this.hw.height;
       this.current_graph = new G6.Graph(this.config);
       this.current_graph.data(this.graphData);
       this.current_graph.render();
@@ -85,7 +102,6 @@ export default {
 <style scoped>
 .graphCanvas {
   background: #576f7f;
-  flex: 1 1 auto;
 }
 
 </style>
