@@ -3,9 +3,7 @@
         <!-- Kind of Navigation -->
         <!-- <BranchList/> -->
         <!-- View of your branches -->
-        <keep-alive>
-            <router-view></router-view>
-        </keep-alive>
+        <router-view></router-view>
     </div>
 </template>
 <script>
